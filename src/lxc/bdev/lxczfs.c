@@ -50,7 +50,7 @@ int zfs_list_entry(const char *path, char *output, size_t inlen)
 	struct lxc_popen_FILE *f;
 	int found=0;
 
-	f = lxc_popen("zfs list 2> /dev/null");
+	f = lxc_popen("zfs list -o name,mountpoint -t filesystem 2> /dev/null");
 	if (f == NULL) {
 		SYSERROR("popen failed");
 		return 0;
